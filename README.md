@@ -1,0 +1,1 @@
+Calculator - web application with few endpoints
