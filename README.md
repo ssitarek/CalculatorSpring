@@ -28,8 +28,9 @@ http://127.0.0.1:8080/calc/power?a=-1.0&b=0.5
 http://127.0.0.1:8080/calc/divide?a=5.0&b=2.0
 http://127.0.0.1:8080/calc/divide?a=5.0&b=0.0
 ```
-In general it is not required to check if (base>0) for sqrt operation (power(-1,0.5) 
-due to the fact that there are exception handling (see: https://en.wikipedia.org/wiki/IEEE_754) 
+In general it is not required to check if (base>0) for sqrt operation (i.e. power(-1.0, 0.5)) 
+or if (secondTerm!=0) for divide operation (i.e. divide(5.0, 0.0)) due to the fact 
+that there are exception handling (see: https://en.wikipedia.org/wiki/IEEE_754) 
 but the endpoint with manual checking has been also prepared:
 
 - divideWithChecking
