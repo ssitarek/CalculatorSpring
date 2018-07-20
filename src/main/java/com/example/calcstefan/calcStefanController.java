@@ -59,6 +59,9 @@ public class calcStefanController {
      * @param exponent exponent of power
      * @return result of power
      * query example: http://127.0.0.1:8080/calc/power?a=5.0&b=2.0
+     * query example: http://127.0.0.1:8080/calc/power?a=-1.0&b=0.5
+     * it is unnecessary to check if (base>0) for sqrt operation (power(-1,0.5) due to the fact that there are exception handling
+     * see: https://en.wikipedia.org/wiki/IEEE_754
      */
     @RequestMapping(value = "/power", params = { "a", "b" })
     public Double power(@RequestParam("a") double base, @RequestParam(value = "b", defaultValue = "1") double exponent) {
@@ -75,11 +78,29 @@ public class calcStefanController {
      * query example: http://127.0.0.1:8080/calc/divide?a=5.0&b=2.0
      * query example: http://127.0.0.1:8080/calc/divide?a=5.0&b=0.0
      * <p>
-     * it is unnecessary to check if (A>0) for sqrt operation due to the fact that there are exception handling
+     * it is unnecessary to check if (secondCoefficient!=0) due to the fact that there are exception handling
      * see: https://en.wikipedia.org/wiki/IEEE_754
      */
     @RequestMapping(value = "/divide", params = { "a", "b" })
     public double divide(@RequestParam("a") double firstCoefficient, @RequestParam(value = "b", defaultValue = "1") double secondCoefficient) {
+        return firstCoefficient / secondCoefficient;
+    }
+
+    /**
+     * method realizes math divide function with checking divideByZero
+     *
+     * @param firstCoefficient first coefficient of division
+     * @param secondCoefficient second coefficient of division
+     * @return result of division
+     * query example: http://127.0.0.1:8080/calc/divideWithChecking?a=5.0&b=2.0
+     * query example: http://127.0.0.1:8080/calc/divideWithChecking?a=5.0&b=0.0
+     */
+    @RequestMapping(value = "/divideWithChecking", params = { "a", "b" })
+    public double divideWithChecking(@RequestParam("a") double firstCoefficient, @RequestParam(value = "b", defaultValue = "1") double secondCoefficient) {
+
+        if(Math.abs(secondCoefficient)<=1e-20){
+            return Double.POSITIVE_INFINITY;
+        }
         return firstCoefficient / secondCoefficient;
     }
 }
