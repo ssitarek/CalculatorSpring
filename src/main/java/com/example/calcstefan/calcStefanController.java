@@ -13,65 +13,65 @@ public class calcStefanController {
     /**
      * method realizes math add function
      *
-     * @param A first term
-     * @param B second term
+     * @param firstTerm first term of addition
+     * @param secondTerm second term of addition
      * @return result of addition
      * query example: http://127.0.0.1:8080/calc/add?a=5.0&b=2.0
      */
     @RequestMapping(value = "/add", params = { "a", "b" })
-    public Double add(@RequestParam("a") double A, @RequestParam(value = "b", defaultValue = "0") double B) {
-        return (A + B);
+    public Double add(@RequestParam("a") double firstTerm, @RequestParam(value = "b", defaultValue = "0") double secondTerm) {
+        return (firstTerm + secondTerm);
     }
 
 
     /**
      * method realizes math subtract function
      *
-     * @param A first term
-     * @param B second term
+     * @param firstTerm first term of subtraction
+     * @param secondTerm second term of subtraction
      * @return result of subtraction
      * query example: http://127.0.0.1:8080/calc/subtract?a=5.0&b=2.0
      */
     @RequestMapping(value = "/subtract", params = { "a", "b" })
-    public Double subtract(@RequestParam("a") double A, @RequestParam(value = "b", defaultValue = "0") double B) {
-        return (A - B);
+    public Double subtract(@RequestParam("a") double firstTerm, @RequestParam(value = "b", defaultValue = "0") double secondTerm) {
+        return (firstTerm - secondTerm);
     }
 
 
     /**
      * method realizes math multiply function
      *
-     * @param A first coeffcient
-     * @param B second coefficient
+     * @param firstCoefficient first coeffcient of multiplication
+     * @param secondCoefficient second coefficient of multiplication
      * @return result of multiplication
      * query example: http://127.0.0.1:8080/calc/multiply?a=5.0&b=2.0
      */
     @RequestMapping(value = "/multiply", params = { "a", "b" })
-    public Double multiply(@RequestParam("a") double A, @RequestParam(value = "b", defaultValue = "1") double B) {
-        return (A * B);
+    public Double multiply(@RequestParam("a") double firstCoefficient, @RequestParam(value = "b", defaultValue = "1") double secondCoefficient) {
+        return (firstCoefficient * secondCoefficient);
     }
 
 
     /**
      * method realizes math power function
      *
-     * @param A base
-     * @param B exponent
-     * @return result of multiplication
+     * @param base base of power
+     * @param exponent exponent of power
+     * @return result of power
      * query example: http://127.0.0.1:8080/calc/power?a=5.0&b=2.0
      */
     @RequestMapping(value = "/power", params = { "a", "b" })
-    public Double power(@RequestParam("a") double A, @RequestParam(value = "b", defaultValue = "1") double B) {
-        return Math.pow(A, B);
+    public Double power(@RequestParam("a") double base, @RequestParam(value = "b", defaultValue = "1") double exponent) {
+        return Math.pow(base, exponent);
     }
 
 
     /**
      * method realizes math divide function without checking divideByZero
      *
-     * @param A first coefficient
-     * @param B second coefficient
-     * @return result of multiplication
+     * @param firstCoefficient first coefficient of division
+     * @param secondCoefficient second coefficient of division
+     * @return result of division
      * query example: http://127.0.0.1:8080/calc/divide?a=5.0&b=2.0
      * query example: http://127.0.0.1:8080/calc/divide?a=5.0&b=0.0
      * <p>
@@ -79,7 +79,7 @@ public class calcStefanController {
      * see: https://en.wikipedia.org/wiki/IEEE_754
      */
     @RequestMapping(value = "/divide", params = { "a", "b" })
-    public double divide(@RequestParam("a") double A, @RequestParam(value = "b", defaultValue = "1") double B) {
-        return A / B;
+    public double divide(@RequestParam("a") double firstCoefficient, @RequestParam(value = "b", defaultValue = "1") double secondCoefficient) {
+        return firstCoefficient / secondCoefficient;
     }
 }
